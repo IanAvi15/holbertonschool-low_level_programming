@@ -1,25 +1,24 @@
 #include <stdio.h>
 
 /**
- * main - Prints all possible combinations of single-digit numbers
+ * main - Prints all single digit numbers separated by comma and space
  *
  * Return: Always 0
  */
 int main(void)
 {
-	int i, j;
+	int i;
 
 	for (i = 0; i < 10; i++)
 	{
-		for (j = i + 1; j < 10; j++)
+		putchar(i + 48);
+		if (i != 9)
 		{
-			putchar(i + 48);
-			putchar(j + 48);
-			putchar(i == 8 && j == 9 ? '\n' : ',');
-			if (!(i == 8 && j == 9))
-				putchar(' ');
+			putchar(',');
+			putchar(' ');
 		}
 	}
+	putchar('\n');
 
 	return (0);
 }
