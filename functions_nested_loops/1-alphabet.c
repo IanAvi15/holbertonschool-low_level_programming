@@ -1,12 +1,12 @@
 #include "main.h"
 
-/**
- * main - tests print_alphabet function
- *
- * Return: Always 0
- */
-int main(void)
+#include "main.h"
+
+void print_alphabet(void)
 {
-	print_alphabet();
-	return (0);
+    char c;
+
+    for (c = 'a'; c <= 'z'; c++)
+        _putchar(c);
+    _putchar('\n');
 }
