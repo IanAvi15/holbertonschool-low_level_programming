@@ -17,11 +17,11 @@ void puts_half(char *str)
 
 	/* Determine starting index for printing */
 	if (len % 2 == 0)
-		start = len / 2;          /* even length */
+		start = len / 2;
 	else
-		start = (len + 1) / 2;    /* odd length, include middle char in second half */
+		start = (len + 1) / 2;
 
-	/* Print the second half */
+	/* Print the second half of the string */
 	for (i = start; i < len; i++)
 		_putchar(str[i]);
 
