@@ -17,4 +17,5 @@ int main(int argc, char *argv[])
 
     printf("%d\n", result);
 
-    retur
+    return (0);
+}
