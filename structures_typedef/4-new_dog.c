@@ -1,6 +1,34 @@
 #include <stdlib.h>
-#include <string.h>
 #include "dog.h"
+
+/**
+ * _strcopy - copies a string from src to a newly allocated memory
+ * @src: string to copy
+ *
+ * Return: pointer to the newly copied string, or NULL if malloc fails
+ */
+char *_strcopy(char *src)
+{
+	char *copy;
+	int i, len;
+
+	if (src == NULL)
+		return (NULL);
+
+	len = 0;
+	while (src[len])
+		len++;
+
+	copy = malloc(len + 1);
+	if (copy == NULL)
+		return (NULL);
+
+	for (i = 0; i < len; i++)
+		copy[i] = src[i];
+	copy[i] = '\0';
+
+	return (copy);
+}
 
 /**
  * new_dog - creates a new dog
@@ -18,34 +46,22 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (d == NULL)
 		return (NULL);
 
-	if (name != NULL)
+	d->name = _strcopy(name);
+	if (name != NULL && d->name == NULL)
 	{
-		d->name = malloc(strlen(name) + 1);
-		if (d->name == NULL)
-		{
-			free(d);
-			return (NULL);
-		}
-		strcpy(d->name, name);
+		free(d);
+		return (NULL);
 	}
-	else
-		d->name = NULL;
+
+	d->owner = _strcopy(owner);
+	if (owner != NULL && d->owner == NULL)
+	{
+		free(d->name);
+		free(d);
+		return (NULL);
+	}
 
 	d->age = age;
-
-	if (owner != NULL)
-	{
-		d->owner = malloc(strlen(owner) + 1);
-		if (d->owner == NULL)
-		{
-			free(d->name);
-			free(d);
-			return (NULL);
-		}
-		strcpy(d->owner, owner);
-	}
-	else
-		d->owner = NULL;
 
 	return (d);
 }
