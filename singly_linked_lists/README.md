@@ -1,0 +1,1 @@
+This readme is for excersises and understanding singly linked lists
