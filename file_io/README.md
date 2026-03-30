@@ -1,0 +1,1 @@
+This readme is for better understanding of file i/o in C
